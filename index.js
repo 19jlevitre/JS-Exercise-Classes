@@ -88,9 +88,13 @@ class Car {
     this.odometer = 0;
   }
   drive(distance){
-    this.odometer += distance;
-    if(distance++){
-
+    if((this.tank * this.milesPerGallon) >= distance){
+      this.odometer += distance;
+      this.tank -= (distance/this.milesPerGallon);
+    }else{
+      this.odometer += (this.tank * this.milesPerGallon);
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
     }
   }
   fill(gallons){
@@ -150,9 +154,9 @@ class Lambdasian {
 class Instructor extends Lambdasian{
   constructor(attributes){
     super(attributes);
-    this.specialty = 'SQL';
-    this.favLanguage = 'C#';
-    this.catchPhrase = "Don't forget the homies";
+    this.specialty = attributes.specialty;
+    this.favLanguage = attributes.favLanguage;
+    this.catchPhrase = attributes.catchPhrase;
   }
   demo(subject){
 return `Today we are learning about ${subject}`;
@@ -184,7 +188,7 @@ class Student extends Lambdasian{
     this.favSubjects = attributes.favSubjects;
   }
   listSubjects(){
-    return this.favSubjects.toString;
+    return this.favSubjects.toString();
   } 
   PRAssignment(subject){
     return `${this.name} has submitted a PR for ${subject}`;
@@ -210,6 +214,7 @@ class Student extends Lambdasian{
 class ProjectManager extends Instructor{
   constructor(attributes){
     super(attributes);
+    
     this.gradClassName = attributes.gradClassName;
     this.favInstructor = attributes.favInstructor;
 
