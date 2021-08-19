@@ -187,10 +187,10 @@ class Student extends Lambdasian{
     return this.favSubjects.toString;
   } 
   PRAssignment(subject){
-    return `${Student.this.name} has submitted a PR for ${subject}`;
+    return `${this.name} has submitted a PR for ${subject}`;
   }
-  sprintChallenge(){
-    return `${Student.this.name} has begun springt challenge on ${subject}`;
+  sprintChallenge(subject){
+    return `${this.name} has begun springt challenge on ${subject}`;
   }
 }
 
@@ -214,7 +214,12 @@ class ProjectManager extends Instructor{
     this.favInstructor = attributes.favInstructor;
 
   }
-   
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
 /*
   STRETCH PROBLEM (no tests!)
